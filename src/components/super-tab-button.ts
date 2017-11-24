@@ -1,3 +1,4 @@
+/*tslint:disable*/
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, ViewEncapsulation, ElementRef } from '@angular/core';
 
 @Component({

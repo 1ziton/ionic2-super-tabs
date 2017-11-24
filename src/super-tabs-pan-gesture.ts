@@ -1,3 +1,4 @@
+/*tslint:disable*/
 import { Platform } from 'ionic-angular';
 import { pointerCoord, PointerCoordinates } from 'ionic-angular/util/dom';
 import { SuperTabsConfig } from './components/super-tabs';

@@ -1,3 +1,4 @@
+/*tslint:disable*/
 import {
   AfterViewInit, Component, ElementRef, Input, OnInit, OnDestroy, Renderer2,
   ViewChild, AfterContentInit, Output, EventEmitter, ViewEncapsulation, forwardRef, Optional

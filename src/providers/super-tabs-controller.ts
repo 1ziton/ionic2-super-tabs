@@ -1,3 +1,4 @@
+/*tslint:disable*/
 import { Injectable } from '@angular/core';
 import { SuperTabs } from '../components/super-tabs';
 

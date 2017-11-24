@@ -1,3 +1,4 @@
+/*tslint:disable*/
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { IonicModule } from 'ionic-angular';
 import { SuperTab } from './components/super-tab';

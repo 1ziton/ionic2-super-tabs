@@ -301,5 +301,38 @@ super-tabs-toolbar {
     }
 
   }
+  // 下拉箭头CSS
+  .arrow-down {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 10%;
+    height: 48px;
+    text-align: center;
+    line-height: 48px;
+    background: #fff;
+    z-index: 10;
+  }
+
+  .panel {
+    position: relative;
+    height: auto;
+    padding-top: 4px;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+  }
+
+  ion-picker {
+    li {
+      background-color: #fff;
+
+    }
+  }
+
+  .customStyle {
+    &::after {
+      background-image: none !important;
+    }
+  }
 
 }

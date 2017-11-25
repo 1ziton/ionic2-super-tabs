@@ -59,6 +59,9 @@ export interface SuperTabsConfig {
                         [tabsColor]="toolbarColor" [indicatorColor]="indicatorColor" [badgeColor]="badgeColor"
                         [scrollTabs]="scrollTabs"
                         [selectedTab]="selectedTabIndex"
+                        [style.width]="addArrow? '90%': '100%'"
+                        [addArrow]="addArrow"
+                        [filterObj]="filterObj"
                         (tabSelect)="onToolbarTabSelect($event)"></super-tabs-toolbar>
     <super-tabs-container [config]="config" [tabsCount]="_tabs.length" [selectedTabIndex]="selectedTabIndex"
                           (tabSelect)="onContainerTabSelect($event)" (onDrag)="onDrag()">
@@ -74,6 +77,19 @@ export interface SuperTabsConfig {
   ]
 })
 export class SuperTabs implements OnInit, AfterContentInit, AfterViewInit, OnDestroy, RootNode, NavigationContainer {
+  
+  /**
+   * 搜索框下拉箭头
+   */
+  @Input()
+  addArrow: boolean = false;
+
+  /**
+   * 搜索对象
+   */
+  @Input()
+  filterObj: any = {};
+
   /**
    * Color of the toolbar behind the tab buttons
    */
@@ -493,6 +509,22 @@ export class SuperTabs implements OnInit, AfterContentInit, AfterViewInit, OnDes
    */
   async onTabChange(index: number) {
     index = Number(index);
+    /**
+     * create by huxiubin on 2017
+     * 判断选项卡选择判断哪些下拉选项显示，0为新任务全显示，1为维修任务不显示安装类型，2返货不显示安装类型和待预约
+     */
+    if(index !== 0 && this.addArrow) {
+      let pickerDom = document.getElementById('picker_parent_installType').getElementsByTagName('li')[0];
+      if(pickerDom) {
+        pickerDom.click();
+      }
+    }
+    if(index === 2 && this.addArrow && window['search_input_statu'] === 'accepted') {
+      let pickerDom = document.getElementById('picker_parent_taskStatus').getElementsByTagName('li')[0];
+      if(pickerDom) {
+        pickerDom.click();
+      }
+    }
     if (index === this.selectedTabIndex) {
       this.tabSelect.emit({
         index,
@@ -702,7 +734,11 @@ export class SuperTabs implements OnInit, AfterContentInit, AfterViewInit, OnDes
 
   // update segment button widths manually
   indexSegmentButtonWidths() {
-    this._plt.raf(() => this.toolbar.indexSegmentButtonWidths());
+    // this._plt.raf(() => this.toolbar.indexSegmentButtonWidths());
+    
+    setTimeout(() => {
+      this.toolbar.indexSegmentButtonWidths();
+    }, 1000)
   }
 }
 

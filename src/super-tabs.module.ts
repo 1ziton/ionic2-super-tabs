@@ -7,6 +7,8 @@ import { SuperTabsController } from './providers/super-tabs-controller';
 import { SuperTabsToolbar } from './components/super-tabs-toolbar';
 import { SuperTabsContainer } from './components/super-tabs-container';
 import { SuperTabButton } from './components/super-tab-button';
+import { IonPickerModule } from "../../ion-picker/ion-picker";
+import { ComponentModule } from "../../component.module";
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { SuperTabButton } from './components/super-tab-button';
     SuperTabButton
   ],
   imports: [
-    IonicModule
+    IonicModule,
+    IonPickerModule,
+    ComponentModule
   ],
   exports: [
     SuperTab,
